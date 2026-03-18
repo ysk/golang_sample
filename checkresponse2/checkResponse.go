@@ -105,8 +105,7 @@ func main() {
 		servers = append(servers, Server{Hostname: parts[0], URL: parts[1]})
 	}
 
-	// 2. 常時監視ループの設定
-	// ここで ticker を定義します（これが漏れていました！）
+	// 常時監視ループの設定
 	ticker := time.NewTicker(3 * time.Second)
 	defer ticker.Stop()
 
@@ -116,7 +115,6 @@ func main() {
 	runCheck(servers)
 
 	//常時監視ループ
-
 	for {
 		select {
 		case <-ticker.C:
@@ -128,5 +126,4 @@ func main() {
 			fmt.Println("==================================================")
 		}
 	}
-
 }
